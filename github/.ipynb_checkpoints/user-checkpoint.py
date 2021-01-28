@@ -20,7 +20,7 @@ class User(api.Worker):
     def get(self):
         return self._data
     
-    def getUserName(self):
+    def getUser(self):
         return self._user
     
     def getName(self):
@@ -47,5 +47,5 @@ class User(api.Worker):
         print("\tEmail: {}".format(self.getEmail()))
         print("\tLocation: {}".format(self.getLocation()))
         print("\tPublic repos: {}".format(self.getNumRepos()))
-        print("\tPublic gists: {}".format(self.getNumGists))
+        print("\tPublic gists: {}".format(self.getNumGists()))
         print("\tAbout: {}".format(self.getBio()))
