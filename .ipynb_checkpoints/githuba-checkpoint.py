@@ -2,35 +2,6 @@ import requests
 import pandas as pd
 
 
-class User:
-    def __init__(self, token):
-        self.headers = requests.utils.default_headers()
-        self.headers.update({'Authorization': 'token ' + token})
-        self._data = {}
-    
-    def load(self, user):
-        self._user = user
-        
-        data = requests.get('https://api.github.com/users/' + user, headers=self.headers)
-        self._data = data.json()
-    
-        return self
-    
-    def get(self):
-        return self._data
-    
-    def show(self):
-        print("Information about user {}:".format(self._user))
-        print("\tName: {}".format(self._data['name']))
-        print("\tEmail: {}".format(self._data['email']))
-        print("\tLocation: {}".format(self._data['location']))
-        print("\tPublic repos: {}".format(self._data['public_repos']))
-        print("\tPublic gists: {}".format(self._data['public_gists']))
-        print("\tAbout: {}".format(self._data['bio']))
-        
-    
-
-
 class Repository:
     def __init__(self, token):
         self._headers = requests.utils.default_headers()
@@ -127,7 +98,7 @@ class Commit:
                 else:
                     break
         
-        self._commits_df = pd.DataFrame(self._commits_information, columns = ['Repo Id', 'Commit Id', 'Date', 'Message'])
+        self._commits_df = pd.DataFrame(self._commits_information, columns = ['Repo Id', 'Commit Id', 'Date', 'Message', "Repository"])
         return self
     
     def __get_commit_data__(self, url):
