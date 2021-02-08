@@ -14,11 +14,15 @@ class User(api.Worker):
         columns = ['user', 'name', 'email', "location", "public_repos", 'public_gists', 'bio']
         
         self._data  = super().get(user_url)
+        self._create_dataframe()
         
         return self
     
-    def get(self):
+    def getData(self):
         return self._data
+    
+    def get(self):
+        return self._dataframe
     
     def getUser(self):
         return self._user
@@ -41,6 +45,26 @@ class User(api.Worker):
     def getBio(self):
         return self._data['bio']
     
+    def _create_dataframe(self):
+        columns = ["User", "Name", "Email", "Location", "Repositories", "Gists", "Bio"]
+        data = []
+        
+        data.append(self.getUser())
+        data.append(self.getName())
+        data.append(self.getEmail())
+        data.append(self.getLocation())
+        data.append(self.getNumRepos())
+        data.append(self.getNumGists())
+        data.append(self.getBio())
+        
+        self._dataframe = pd.DataFrame([data], columns=columns)
+    
+    def save(self):
+        path = "{}/user_info_{}.csv".format(super().getConf().getPath(), super().getConf().getUser())
+        self._dataframe.to_csv(path, index = False)
+        
+        return self
+        
     def show(self):
         print("Information about user {}:".format(self.getUser()))
         print("\tName: {}".format(self.getName()))

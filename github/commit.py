@@ -18,7 +18,7 @@ class Commit(api.Worker):
                 response = super().get(url)
                 for commit in response:
                     if commit["author"] is not None:
-                        if commit["author"]["login"] == self._user:
+                        if len(commit["author"]) > 0 and commit["author"]["login"] == self._user:
                             commit_data = self.__create_data__(commit, i, repos_df["Name"][i])
                             self._commits_information.append(commit_data)
                 if (len(response) == 30):
