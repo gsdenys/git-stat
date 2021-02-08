@@ -4,13 +4,13 @@ import github.api as api
 
 class User(api.Worker):
 
-    def __init__(self, token):
-        super().__init__(token)
+    def __init__(self):
+        super().__init__()
     
-    def load(self, user):
-        self._user = user
+    def load(self):
+        self._user = super().getConf().getUser()
         
-        user_url = "https://api.github.com/users/{}".format(user)
+        user_url = "https://api.github.com/users/{}".format(self._user)
         columns = ['user', 'name', 'email', "location", "public_repos", 'public_gists', 'bio']
         
         self._data  = super().get(user_url)
