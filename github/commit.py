@@ -9,7 +9,7 @@ class Commit(api.Worker):
     def load(self, repos_df):
         self._repos_df = repos_df
         self._user = super().getConf().getUser()
-        
+                
         self._commits_information = []
         for i in range(repos_df.shape[0]):
             url = repos_df.loc[i, 'Commits URL']
@@ -51,5 +51,8 @@ class Commit(api.Worker):
     def save(self):
         path = "{}/commits_info_{}.csv".format(super().getConf().getPath(), super().getConf().getUser())
         self._commits_df.to_csv(path, index = False)
+        
+        print("Dataframe saved at: {}".format(path))
+        
         return self
     

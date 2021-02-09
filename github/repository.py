@@ -67,6 +67,9 @@ class Repository(api.Worker):
     def save(self):
         path = "{}/repos_info_{}.csv".format(super().getConf().getPath(), super().getConf().getUser())
         self._dataframe.to_csv(path, index = False)
+        
+        print("Dataframe saved at: {}".format(path))
+        
         return self
         
         

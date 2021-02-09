@@ -42,3 +42,6 @@ class Config:
     
     def getCommitPath(self):
         return "{}/commits_info_{}.csv".format(self.getPath(), self.getUser())
+    
+    def getLanguagePath(self):
+        return "{}/language_info_{}.csv".format(self.getPath(), self.getUser())

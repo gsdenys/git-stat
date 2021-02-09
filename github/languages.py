@@ -47,7 +47,10 @@ class Languages(api.Worker):
         return self._languages_df
 
     def save(self):
-        self._commits_df.to_csv(super().getConf().getPath().getCommitPath(), index = False)
+        path = super().getConf().getLanguagePath()
+        self._languages_df.to_csv(path, index = False)
+        
+        print("Dataframe saved at: {}".format(path))
         
         return self
     

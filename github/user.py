@@ -63,6 +63,8 @@ class User(api.Worker):
         path = "{}/user_info_{}.csv".format(super().getConf().getPath(), super().getConf().getUser())
         self._dataframe.to_csv(path, index = False)
         
+        print("Dataframe saved at: {}".format(path))
+        
         return self
         
     def show(self):
@@ -73,3 +75,5 @@ class User(api.Worker):
         print("\tPublic repos: {}".format(self.getNumRepos()))
         print("\tPublic gists: {}".format(self.getNumGists()))
         print("\tAbout: {}".format(self.getBio()))
+        
+        return self
