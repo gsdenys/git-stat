@@ -24,7 +24,7 @@ class Repository(api.Worker):
         data.append(repo['url'])
         data.append(repo['commits_url'].split("{")[0])
         data.append(repo['url'] + '/languages')
-    
+        
         return data
     
     def __dataframe__(self, repos_data):

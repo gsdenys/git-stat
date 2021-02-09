@@ -33,3 +33,12 @@ class Config:
     
     def getPath(self):
         return self._path
+    
+    def getUserPath(self):
+        return "{}/user_info_{}.csv".format(self.getPath(), self.getUser())
+    
+    def getRepoPath(self):
+        return "{}/repos_info_{}.csv".format(self.getPath(), self.getUser())
+    
+    def getCommitPath(self):
+        return "{}/commits_info_{}.csv".format(self.getPath(), self.getUser())
