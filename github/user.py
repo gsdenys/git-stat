@@ -1,11 +1,12 @@
 import pandas as pd
 import github.api as api
+from 
 
 
 class User(api.Worker):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, config):
+        super().__init__(config)
     
     def load(self):
         self._user = super().getConf().getUser()

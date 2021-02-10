@@ -3,8 +3,8 @@ import github.api as api
 
 class Languages(api.Worker):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, config):
+        super().__init__(config)
     
     def load(self, repos_df):
         self._repos_df = repos_df
