@@ -1,7 +1,5 @@
 import pandas as pd
 import github.api as api
-from 
-
 
 class User(api.Worker):
 

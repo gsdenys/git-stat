@@ -1,7 +1,7 @@
 import requests as req
-from config import Config
+# from config import Config
 
-class GitWorker:
+class Worker:
     """ Worker class to helps implementation of github API actions """
 
     def __init__(self, config):
@@ -10,6 +10,8 @@ class GitWorker:
         Args:
             config (Config): The configuratin object
         """
+        
+        self._config = config
         
         # Create the HTTP requeste header
         self._headers = req.utils.default_headers()
@@ -27,5 +29,6 @@ class GitWorker:
         data = req.get(url, headers=self._headers)
         return data.json()
 
-
+    def getConf(self):
+        return self._config
 

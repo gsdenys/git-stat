@@ -67,7 +67,7 @@ class Config:
         Returns:
             str: repository info file path
         """
-        return self.__get_path__("user") 
+        return self.__get_path__("repos") 
     
     def getCommitPath(self) -> str:
         """Get the file path to commit data information
@@ -83,4 +83,4 @@ class Config:
         Returns:
             str: language info file path
         """
-        return self.__get_path__("commits") 
+        return self.__get_path__("language") 
